@@ -1,0 +1,53 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p><a th:href="|/changeUserInfoShow_user?ID=${user.id}|">修改个人信息</a></p>
+<p>书籍信息</p>
+<table>
+    <tr>
+        <td>编号</td>
+        <td>书名</td>
+        <td>出版社</td>
+        <td>出版时间</td>
+        <td>价格</td>
+        <td>类型</td>
+        <td>操作</td>
+    </tr>
+    <tr th:each="book:${allBooks}">
+        <td th:text="${book.id}"></td>
+        <td th:text="${book.name}"></td>
+        <td th:text="${book.publisher}"></td>
+        <td th:text="${book.publishTime}"></td>
+        <td th:text="${book.price}"></td>
+        <td th:text="${book.type}"></td>
+        <td><a th:href="|/borrowBook?userID=${user.id}&bookID=${book.id}|">借阅</a> </td>
+    </tr>
+</table>
+<p>借阅信息</p>
+<table>
+    <tr>
+        <td>编号</td>
+        <td>书名</td>
+        <td>出版社</td>
+        <td>出版时间</td>
+        <td>价格</td>
+        <td>类型</td>
+        <td>操作</td>
+    </tr>
+    <tr th:each="book:${borrowedBooks}">
+        <td th:text="${book.id}"></td>
+        <td th:text="${book.name}"></td>
+        <td th:text="${book.publisher}"></td>
+        <td th:text="${book.publishTime}"></td>
+        <td th:text="${book.price}"></td>
+        <td th:text="${book.type}"></td>
+        <td><a th:href="|/returnBook?userID=${user.id}&bookID=${book.id}|">归还</a> </td>
+    </tr>
+</table>
+</body>
+</html>

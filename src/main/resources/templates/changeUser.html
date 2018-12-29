@@ -1,0 +1,23 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户信息详细修改页（由用户自己进行修改）</title>
+</head>
+<body>
+<h1>用户信息详细修改页（由管理员进行修改）</h1>
+<!--2.读者表（保存注册时读者详细信息：读者用户名，姓名，院系，专业，兴趣爱好，出生日期，年级）-->
+<form action="/changeUserInfo_user" method="post">
+    <p><label>用户名<input type="text" th:value="${user.id}" name="ID" readonly></label></p>
+    <p><label>姓名<input type="text" th:value="${user.name}" name="userName"></label></p>
+    <p><label>密码<input type="text" th:value="${pw}" name="PW"> </label></p>
+    <p><label>院系<input type="text" th:value="${user.school}" name="school"></label></p>
+    <p><label>专业<input type="text" th:value="${user.major}" name="major"></label></p>
+    <p><label>兴趣爱好<input type="text" th:value="${user.hobby}" name="hobby"></label></p>
+    <p><label>出生日期<input type="date" th:value="${user.bornDate}" name="bornDate"></label></p>
+    <p><label>年级<input type="number" th:value="${user.grade}" name="grade"></label></p>
+    <p><input type="submit" value="确认修改"></p>
+</form>
+</body>
+</html>

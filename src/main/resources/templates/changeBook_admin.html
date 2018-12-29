@@ -1,0 +1,21 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/changeBook">
+    <p><label>图书编号<input type="text" th:value="${book.id}" name="id"></label></p>
+    <p><label>图书名称<input type="text"  th:value="${book.name}" name="name"></label></p>
+    <p><label>出版社<input type="text" th:value="${book.publisher}" name="publisher"> </label></p>
+    <p><label>出版时间<input type="date" th:value="${book.publishTime}" name="publishTime"></label></p>
+    <p><label>类别<input type="text" th:value="${book.type}" name="type"></label></p>
+    <p><label>价格<input type="number" step="any" th:value="${book.price}" name="price"></label></p>
+    <p><input type="submit" value="修改"></p>
+    <p><input type="submit" value="删除"></p>
+
+</form>
+</body>
+</html>

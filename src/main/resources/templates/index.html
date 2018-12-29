@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+<body>
+<h1>主页</h1>
+<form action="/login" method="post">
+    <!--<label>用户名</label>-->
+    <label>用户名<input type="text" title="用户名" name="id"></label>
+    <!--<p>密码</p>-->
+    <br>
+    <label>密码<input type="password" title="密码" name="pw"></label>
+    <br>
+    <label><input type="checkbox" name="admin" value="yes">管理员登录</label>
+    <br>
+    <a href="/signUpInput">立即注册</a>
+    <br>
+    <input type="submit" name="登录">
+</form>
+</body>
+</html>
