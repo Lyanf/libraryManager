@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "admin-lte": "^2.4.8",
     "bootstrap": "^4.1.3"
   }
 }
