@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>自定义错误信息示例</title>
+    <script type="text/javascript">
+        var check = function() {
+            var passwd1 = document.forms['testForm'].passwd1;
+            var passwd2 = document.forms['testForm'].passwd2;
+            if(passwd1.value != passwd2.value) {
+                passwd2.setCustomValidity("密码不一致！");
+                return false;
+            } else {
+                passwd2.setCustomValidity('');
+            }
+            var email = document.forms['testForm'].email1;
+            if(!email1.checkValidity()) {
+                email1.setCustomValidity("请输入正确的E-mail地址！");
+                return false;
+            }
+            else{
+                email1.setCustomValidity('');
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+<form id="testForm" name="testForm" onsubmit="return check();">
+    <label for="pass1">密码:</label><input type="password" name="passwd1"/><br/>
+    <label for="pass2">确认密码:</label><input type="password" name="passwd2"/><br/>
+    <label for="email">E-mail:</label><input type="email" name="email1"/><br/>
+    <button type="submit">提交</button>
+</form>
+</body>
+</html>  

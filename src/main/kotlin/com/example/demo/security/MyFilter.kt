@@ -54,7 +54,7 @@ class judgeAdmin : HandlerInterceptor {
 }
 
 @Configuration
-class WebMvcConfig : WebMvcConfigurer {
+open class WebMvcConfig : WebMvcConfigurer {
 
     @Autowired
     lateinit var myInterceptor: LoginFilter;
@@ -68,14 +68,15 @@ class WebMvcConfig : WebMvcConfigurer {
     @Override
     override fun addInterceptors(registry: InterceptorRegistry) {
         registry.addInterceptor(myInterceptor).excludePathPatterns("/index", "/login", "/logout", "/signUpInput",
-                "/userSignUp").order(1)
+                "/userSignUp","/bower_components/**","/build/**","/dist/**",
+                "/plugins/**","/jquery.cxselect.js","/testid","/error").order(1)
         registry.addInterceptor(judgeCorrectID).addPathPatterns("/userIndex",
                 "/borrowBook", "/returnBook", "/changeUserInfoShow_user", "/changeUserInfo_user").order(2)
         registry.addInterceptor(judgeadmin).addPathPatterns("/adminIndex", "/changeBook",
                 "/changeBookShow", "/addBook",
-                "/addBookShow", "/listAllBooks",
+                "/addBookShow", "/listAllBooks","/delBook",
                 "/addUser", "/addUserShow",
                 "/changeUserInfo", "/changeUserInfoShow").order(3)
-    }
 
+    }
 }

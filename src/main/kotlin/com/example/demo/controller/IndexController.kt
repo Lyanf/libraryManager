@@ -6,10 +6,16 @@ import org.springframework.boot.autoconfigure.kafka.KafkaProperties
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.ui.set
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
+import org.springframework.web.bind.annotation.ResponseBody
 import java.security.Principal
 import javax.servlet.http.HttpSession
+import org.springframework.boot.web.servlet.error.ErrorController
+import org.springframework.web.bind.annotation.RestController
+
+
 
 //@RestController
 @Controller
@@ -38,12 +44,31 @@ class MyController {
         userLog.userDetail = userDetail
         userLogRep.save(userLog)
         println(born)
-        return "index"
+        return "loginIndex"
+    }
+
+    @RequestMapping("/testid")
+    @ResponseBody
+    fun checkid(id:String):String{
+        if (userLogRep.findById(id).isPresent) {
+            return "no"
+        }
+        else{
+            return "yes"
+        }
     }
 
     @RequestMapping("/index")
     fun index():String{
-        return "index"
+        return "loginIndex"
+    }
+    @RequestMapping("/")
+    fun index2():String{
+        return "loginIndex"
+    }
+    @RequestMapping("logout")
+    fun index3():String{
+        return "loginIndex"
     }
     //    登录接收
     @RequestMapping("/login")
@@ -87,7 +112,7 @@ class MyController {
             users.add(UserShow(user.id, user.name))
         }
         model.set("users", users)
-        return "adminIndex"
+        return "listUsers_admin"
     }
 
     //    进入修改用户的页面(管理员功能)
@@ -134,7 +159,12 @@ class MyController {
     @RequestMapping("/listAllBooks")
     fun listAllBooks(model: Model): String {
         model.addAttribute("books", bookRep.findAll())
-        return "findBooks"
+        return "listBooks_admin"
+    }
+    @RequestMapping("/delBook")
+    fun delBook(ID:String):String{
+        bookRep.deleteById(ID)
+        return "redirect:listAllBooks"
     }
 
     //    增加图书的页面
@@ -205,5 +235,17 @@ class MyController {
         newUserLog.userDetail = User(ID, userName, school, major, hobby, born, grade)
         userLogRep.save(newUserLog)
         return "redirect:/userIndex?ID=${ID}"
+    }
+}
+
+@Controller
+class IndexController : ErrorController {
+    @RequestMapping(value = "/error")
+    fun error(): String {
+        return "404"
+    }
+
+    override fun getErrorPath(): String {
+        return "/error"
     }
 }

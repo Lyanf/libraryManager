@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <input type="text" >
+</form>
+
+<script src="../static/bower_components/jquery/dist/jquery.js"></script>
+<script src="../static/jquery.cxselect.js"></script>
+<script>
+    $('#element_id').cxSelect({
+        selects: ['school', 'major'],  // 数组，请注意顺序
+        emptyStyle: 'none',
+        jsonName:'name',
+        jsonValue:'value',
+        jsonSub:'sub',
+        data:
+            [
+                {
+                    name: '信息院',
+                    value: '信息院',
+                    sub: [
+                        {
+                            name: '计算机',
+                            value: '计算机'
+                        },
+                        {
+                            name: '信息安全',
+                            value: '信息安全'
+                        }
+                    ]
+                },
+                {
+                    name:'物理院',
+                    value:'物理院',
+                    sub:[
+                        {
+                            name:'材料物理',
+                            value:'材料物理'
+                        },
+                        {
+                            name:'理论物理',
+                            value:'理论物理'
+                        }
+                    ]
+                }
+            ]
+    });
+</script>
+</body>
+</html>
