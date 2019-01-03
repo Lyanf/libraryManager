@@ -205,6 +205,22 @@ class MyController {
         return "userIndex"
     }
 
+    @RequestMapping("/chartJS")
+    fun chartjs(model: Model, ID: String): String {
+        model.addAttribute("user", userRep.findById(ID).get())
+        model.addAttribute("borrowedBooks", userLogRep.findById(ID).get().books)
+        model.addAttribute("allBooks", bookRep.findAll())
+        return "chartJS"
+    }
+
+    @RequestMapping("/flotJS")
+    fun flotjs(model: Model, ID: String): String {
+        model.addAttribute("user", userRep.findById(ID).get())
+        model.addAttribute("borrowedBooks", userLogRep.findById(ID).get().books)
+        model.addAttribute("allBooks", bookRep.findAll())
+        return "flotJS"
+    }
+
     @RequestMapping("/borrowBook")
     fun borrowBook(userID: String, bookID: String): String {
         val t= userLogRep.findById(userID).get()

@@ -73,8 +73,12 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">普通用户</li>
-        <li><a th:href="|/userIndex?ID=${user.id}|"><i class="fa fa-circle-o text-red"></i> <span>书籍信息</span></a></li>
-        <li><a th:href="|/changeUserInfoShow_user?ID=${user.id}|"><i class="fa fa-circle-o text-yellow"></i> <span>个人信息</span></a></li>
+        <li><a th:href="|/changeUserInfoShow_user?ID=${user.id}|"><i class="fa fa-circle-o text-yellow"></i>
+          <span>个人信息</span></a></li>
+        <li><a th:href="|/userIndex?ID=${user.id}|"><i class="fa fa-circle-o text-red"></i>
+          <span>使用数据集</span></a></li>
+        <li><a th:href="|/chartJS?ID=${user.id}|"><i class="fa fa-circle-o text-aqua"></i> <span>实时情况</span></a></li>
+        <li><a th:href="|/flotJS?ID=${user.id}|"><i class="fa fa-circle-o text-aqua"></i> <span>数据分析</span></a></li>
         <li><a href="/logout"><i class="fa fa-circle-o text-aqua"></i> <span>退出登录</span></a></li>
       </ul>
     </section>
@@ -97,7 +101,7 @@
           <!-- /.box -->
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">书籍表</h3>
+              <h3 class="box-title">数据表</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -105,11 +109,10 @@
                 <thead>
                 <tr>
                   <th>编号</th>
-                  <th>书名</th>
-                  <th>出版商</th>
-                  <th>出版时间</th>
-                  <th>价格</th>
-                  <th>类型</th>
+                  <th>名称</th>
+                  <th>描述</th>
+                  <th>数据路径</th>
+                  <th>读取脚本路径</th>
                   <th>操作</th>
                 </tr>
                 </thead>
@@ -120,18 +123,16 @@
                   <td th:text="${book.publisher}"></td>
                   <td th:text="${book.publishTime}"></td>
                   <td th:text="${book.price}"></td>
-                  <td th:text="${book.type}"></td>
-                  <td><a th:href="|/borrowBook?userID=${user.id}&bookID=${book.id}|">借阅</a> </td>
+                  <td><a th:href="|/borrowBook?userID=${user.id}&bookID=${book.id}|">使用</a> </td>
                 </tr>
                 </tbody>
                 <tfoot>
                 <tr>
                   <th>编号</th>
-                  <th>书名</th>
-                  <th>出版商</th>
-                  <th>出版时间</th>
-                  <th>价格</th>
-                  <th>类型</th>
+                  <th>名称</th>
+                  <th>描述</th>
+                  <th>数据路径</th>
+                  <th>读取脚本路径</th>
                   <th>操作</th>
                 </tr>
                 </tfoot>
@@ -142,7 +143,7 @@
 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">借阅表</h3>
+              <h3 class="box-title">使用数据表</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -150,11 +151,10 @@
                 <thead>
                 <tr>
                   <th>编号</th>
-                  <th>书名</th>
-                  <th>出版商</th>
-                  <th>出版时间</th>
-                  <th>价格</th>
-                  <th>类型</th>
+                  <th>名称</th>
+                  <th>描述</th>
+                  <th>数据路径</th>
+                  <th>读取脚本路径</th>
                   <th>操作</th>
                 </tr>
                 </thead>
@@ -166,17 +166,16 @@
                   <td th:text="${book.publishTime}"></td>
                   <td th:text="${book.price}"></td>
                   <td th:text="${book.type}"></td>
-                  <td><a th:href="|/returnBook?userID=${user.id}&bookID=${book.id}|">归还</a> </td>
+                  <td><a th:href="|/returnBook?userID=${user.id}&bookID=${book.id}|">取消使用</a> </td>
                 </tr>
                 </tbody>
                 <tfoot>
                 <tr>
                   <th>编号</th>
-                  <th>书名</th>
-                  <th>出版商</th>
-                  <th>出版时间</th>
-                  <th>价格</th>
-                  <th>类型</th>
+                  <th>名称</th>
+                  <th>描述</th>
+                  <th>数据路径</th>
+                  <th>读取脚本路径</th>
                   <th>操作</th>
                 </tr>
                 </tfoot>
